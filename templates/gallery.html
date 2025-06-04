@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeri Gambar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .image-block {
+            margin-bottom: 30px;
+        }
+        .image-block img {
+            margin-right: 10px;
+            border: 1px solid #ccc;
+        }
+        hr {
+            border: 1px solid #ddd;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ Galeri Gambar yang Telah Diproses</h1>
+    <p><a href="{{ url_for('index') }}">⬅ Kembali ke Upload</a></p>
+    <hr>
+    {% for image in images %}
+        <div class="image-block">
+            <p><strong>Nama File:</strong> {{ image[1] }}</p>
+            <img src="{{ url_for('static', filename='uploads/' + image[1]) }}" width="250" alt="Gambar Asli">
+            <img src="{{ url_for('static', filename='uploads/' + image[2]) }}" width="250" alt="Gambar Proses">
+            <br><img src="{{ url_for('static', filename='uploads/' + image[3]) }}" width="500" alt="Plot Histogram">
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+</html>
